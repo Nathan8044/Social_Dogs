@@ -1,0 +1,428 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+/* Reset Broswer cache if css not loading correctly */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,800&display=swap');
+
+
+:root {
+
+
+
+	/* Primary */
+	--fc-main: #EEEEEE;
+	--fc-tabs: #FFFFFF;
+
+
+
+
+	/* Fonts */
+	--ff-primary: 'Lato', sans-serif;
+
+	/* font sizes */
+
+	--fs-xlg: 2rem; /*32*/
+	--fs-lg: 1.875rem; /*30*/
+	--fs-md-lg: 1.6875rem; /*27*/
+	--fs-md: 1.5 rem; /*24*/ 
+	--fs-sm: 1rem; /*16*/ 
+	--fs-xsm: 0.75rem; /*12*/ 
+
+
+	/* Font weights */
+
+	--fw-regular: 400;
+	--fw-semi-bold: 600;
+	--fw-bold: 700;
+
+
+}
+
+
+/* Utility Functions */
+
+
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	background-color: var(--fc-main);
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+/* utility function */
+.fs-xlg {
+
+    font-family: var(--ff-primary);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-xlg);
+}
+
+.fs-lg {
+
+    font-family: var(--ff-primary);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-lg);
+}
+
+.fs-md-lg {
+
+    font-family: var(--ff-primary);
+    font-weight: var(--fw-semi-bold);
+    font-size: var(--fs-md-lg);
+}
+
+.fs-md {
+
+    font-family: var(--ff-primary);
+    font-weight: var(--fw-semi-bold);
+    font-size: var(--fs-md);
+}
+
+.fs-sm {
+    font-family: var(--ff-primary);
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-sm);	
+}
+
+.fs-xsm {
+	font-family: var(--ff-primary);
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-xsm);	
+}
+
+/* Header Section */
+header {
+	height: 74px;
+	background-color: var(--fc-tabs);
+
+	
+}
+
+
+
+.container {
+
+    margin-left: 4rem;
+    margin-right: 4rem;
+	text-align: center;
+
+
+	
+
+
+}
+/* Nav Bar CSS */
+
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+
+	background-color: var(--fc-tabs);
+	position: relative;
+	top: 9px;
+
+
+
+
+
+}
+
+.nav-list {
+
+	display: flex;
+    gap: 1rem;
+    justify-content: center;
+	align-items: center;
+	text-decoration: none;
+
+}
+
+.fs-md-nav {
+	color: black;
+}
+
+.profile-logo {
+	border-radius: 20px;
+}
+
+.fs-md-nav {
+
+	margin-bottom: 200px;
+}
+
+/* Left item container */
+.left-item-container {
+
+	width: 1000px;
+	height: 1000px;
+
+	margin-top: 20px;
+
+
+}
+
+.left-bar-container {
+
+	width: 160px;
+	height: 627px;
+	background-color: var(--fc-tabs);
+	display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+	border-top-right-radius: 25px;
+	border-bottom-right-radius: 25px;
+}
+
+.left-bar-list {
+    list-style: none; /* Remove default list styles */
+    padding: 0;
+	position: relative;
+	top: 100px;
+}
+
+
+.left-item {
+	margin-bottom: 50px;
+}
+
+.left-bar-item {
+
+	color: black;
+	text-decoration: none;
+}
+
+#series {
+
+	position: relative;
+	left: 11px;
+}
+
+#testimonies {
+
+	position: relative;
+	left: 13px;
+}
+.fa-church {
+	position: relative;
+	right: 2px;
+}
+
+#churches {
+
+	position: relative;
+	left: 10px;
+}
+
+.fa-user {
+
+	position: relative;
+	left: 4px;
+}
+
+
+#creators {
+	position: relative;
+	left: 20px;
+}
+
+.features-hidden {
+    display: none;
+}
+
+.features-visible {
+    display: grid;
+}
+
+.profile-dropdown-container {
+    background-color: var(--fc-tabs);
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 92.45%;  /* Adjust the right position using percentage */
+    top: 74px;
+	
+}
+
+.profile-dropdown {
+	
+	justify-content: left;
+}
+
+.profile-dropdown-list {
+	justify-content: left;
+}
+
+.profile-dropdown-item {
+
+	margin-top: 15px;
+	margin-bottom: 15px;
+
+
+	
+}
+
+.profile-dropdown-link {
+
+	text-decoration: none;
+}
+
+
+/* User Clicked Videos */
+
+.video-list-container {
+
+	width: 843px;
+	position: relative;
+	left: 300px;
+	bottom: 996px;
+}
+
+.video-container {
+
+	width: 200px;
+}
+
+.list-items {
+
+	text-decoration: none;
+}
+
+.user-video {
+
+	border-radius: 25px;
+	height: 567.7852942px;
+}
+
+.user-video-title {
+	width: 843px;
+	margin-top: 20px;
+}
+
+.user-video-description {
+	width: 843px;
+	margin-top: 20px;
+}
+
+.user-profile-ls {
+	display: flex;
+	margin-top: 20px;
+	
+}
+
+.user-profile-ul {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#user-profile-img {
+
+	width: 50px;
+	height:  50px;
+	border-radius: 25px;
+	margin-right: 20px;
+}
+
+.user-profile-ls a {
+	text-decoration: none;
+	color: black
+}
+
+.video-thumbnail {
+	width: 173px;
+	height: 120px;
+	border-radius: 15px;
+}
+
+.li-thumbnails {
+	margin-right: 20px;
+}
+/* Recommended Videos  */
+.recommended-videos-container {
+
+
+	width: 500px;
+	position: relative;
+	left: 1200px;
+	bottom: 1677px;
+
+}
+#recommended-profile-img {
+
+	width: 26px;
+	height: 26px;
+	border-radius: 13px;
+}
+
+.ul-thumbnails {
+	display: flex;
+}
+
+.video-title {
+	width: 173px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+.recommended-video {
+	margin-bottom: 20px;
+}
+.recommended-profile-ul {
+	display: flex;
+}
+
+.recommended-profile-items {
+	margin-right: 20px;
+}
+
+
+.video-display a {
+
+	text-decoration: none;
+	color: black
+}

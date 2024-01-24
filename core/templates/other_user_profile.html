@@ -1,0 +1,203 @@
+<p>{{username}}</p>{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="{% static 'other_user_profile.css' %}">
+    <script src="https://kit.fontawesome.com/d57e6babac.js" crossorigin="anonymous"></script>
+    <title>Aclesia</title>
+</head>
+<body>
+
+    <header>
+
+        <div class="container">
+            <div class="nav-wrapper">
+                <a class="nav-image" href=""><img class="aclesia-logo" src="{% static 'aclesia_logo_50x50.png'%}"></a>
+                <nav>
+                    <ul aria-label="Primary" role="list" class="nav-list">
+                        <li><a class="fs-md-nav" id="create-icon" href="/create-content"><i class="fa-solid fa-plus fa-xl"></i></a></li>
+                        <li><a class="fs-md-nav" id="follow-others" href="https://www.google.com"><i class="fa-solid fa-user-plus fa-xl"></i></a></li>
+                        <li><a class="fs-md-nav" id="chat" href="https://www.google.com"><i class="fa-solid fa-message fa-xl"></i></a></li>
+                        <li><a class="fs-md-nav" id="notifications" href="https://www.google.com"><i class="fa-solid fa-bell fa-xl"></i></a></li>
+                        <li><a class="fs-md-nav" id="user-profile-image" href="/user_profile"><img class="profile-logo" src="{% static 'nathan_logo_50x50.png'%}"></a></li>
+                        <li><a class="fs-md-nav" id="dropdown-button" href="#"><i class="fa-solid fa-caret-down fa-lg"></i></a></li>
+                    </ul>
+                </nav>
+
+            </div>
+            <div class="features-hidden profile-dropdown-container" id="dropdown-menu">
+                <div class="">
+                    <ul class="profile-dropdown-list" aria-label="primary" role="list">
+                        <li class="profile-dropdown-item fs-sm"><a class="profile-dropdown-link" href="/user_profile">Profile</a></li>
+                        <li class="profile-dropdown-item fs-sm"><a class="profile-dropdown-link" href="#">Settings</a></li>
+                        <li class="profile-dropdown-item fs-sm"><a class="profile-dropdown-link" href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+    <main>
+        <div class="content-container">
+            <div class="left-item-container">
+                <div class="left-bar-container">
+                    <ul class="left-bar-list" aria-label="primary" role="list">
+                        <li class="left-item fs-sm"><a class="left-bar-item"  href=""><i id="series-icon"class="fa-solid fa-video fa-xl"></i><span id="series">Series</span></a></li>
+                        <li class="left-item fs-sm"><a class="left-bar-item"  href=""><i class="fa-solid fa-pencil fa-xl"></i><span id="testimonies">Testimonies</span></a></li>
+                        <li class="left-item fs-sm"><a class="left-bar-item" href=""><i class="fa-solid fa-church fa-xl"></i><span id="churches">Churches</span></a></li>
+                        <li class="left-item fs-sm"><a class="left-bar-item"  href=""><i id="creators-icon" class="fa-regular fa-user fa-xl"></i><span id="creators">Creators</span></a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="user-information-container">
+                <ul class="user-information-list">
+                    <li class="user-information-item">
+                        <img id="profile-img" src="{{ profile_photo.url }}" alt="Profile Photo">
+                    </li>
+
+
+                    <li id="user-username" class="user-information-item fs-lg">
+                        <span>@{{user.username}}</span>
+                        <a class="edit-profile-button" id="edit-profile-button"><i class="fa-solid fa-pen-to-square fa-sm"></i></a>
+                    </li>
+                    <li id="user-bio"class="user-information-item">
+                        <span class="fs-md">{{bio}}</span>
+                    </li>
+                    <div class="basechurch-denomination">
+                        <div id="user-basechurch" class="user-information-item">
+                            {% if base_church %}
+                                <div class="base-church-name">
+                                    <i class="fa-solid fa-house"></i>
+                                    <span id="base_church" class="fs-md">{{ base_church }}</span>
+                                </div>
+
+                            {% endif %}
+                        </div>
+                        <div id="user-denomination" class="user-information-item fs-md">
+                            <span class="fs-md">{{ denomination }}</span>
+                        </div>
+
+                    </div>
+                    
+                </ul>
+
+            </div>
+
+
+
+        </div>
+        <div class="posts-container">
+            <div class="post-text">
+                <span class="fs-lg">Posts</span>
+            </div>
+
+            <div class="posts-content">
+
+            </div>
+
+        </div>
+        <div class="videos-container">
+            <div class="videos-text">
+                <span class="fs-lg">Videos</span>
+            </div>
+
+
+            <ul class="ul-thumbnails">
+
+                {% for video in user_videos %}
+                <div class="video-display">
+                    <a href="{%url 'watch_video' video.id%}">
+                        <li class="li-thumbnails">
+                            <div class="video-items">
+                                <img class="video-thumbnail"src="{{video.thumbnail.url}}">
+                                <p class="video-title fs-md">{{video.title}}</p>
+                            </div>
+                        </li>
+
+
+                    </a>
+                </div>
+                {% endfor %}
+
+            </ul>
+        </div>
+
+
+        <div class="edit-hidden" id="edit-container">
+            <div class="outer-body">
+                <div class="inner-body">
+                    <div class="inner-body-container">
+                        <div class="x-button-container">
+                            <a id="x-button" href="#">
+                                <i class="fa-solid fa-x fa-2xl"></i>
+                            </a>
+                        </div>
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="edit-profile-header">
+                                <ul class="edit-header-ul">
+                                    <li class="edit-header-items"><img id="edit-profile-img" src="{{ profile_photo.url }}"></li>
+                                    <li class="edit-header-items">
+                                        <input name="upload-new-profile-image" id="upload-new-profile-image" type="file" hidden>
+                                        <label class="fs-xsm" for="upload-new-profile-image" id="label-upload-profile-img">Change Profile Picture</label>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="edit-fields">
+
+                                    <ul class="edit-fields-ul">
+                                        <li class="edit-fields-items">
+                                            <p class="fs-md edit-user-info-txt">Username</p>
+                                            <input class="edit-user-info-input"type="text" id="username" name="username">
+                                        </li>
+                                        <li class="edit-fields-items">
+                                            <p class="fs-md edit-user-info-txt">Bio</p>
+                                            <input class="edit-user-info-input"type="text" id="bio" name="bio">
+                                        </li>
+                                        <li class="edit-fields-items">
+                                            <p class="fs-md edit-user-info-txt">Home Church</p>
+                                            <input class="edit-user-info-input"type="text" id="home_church" name="home_church">
+                                        </li>
+                                        <li class="edit-fields-items">
+                                            <p class="fs-md edit-user-info-txt">Denomination</p>
+                                            <input class="edit-user-info-input"type="text" id="denomination" name="denomination">
+                                        </li>
+                                    </ul>
+
+
+                            </div>
+
+                            <div class="save-button">
+                                <button type="submit" id="save-button-id" hidden></button>
+                                <label for="save-button-id" id="save-button-tag"><i class="fa-solid fa-floppy-disk fa-2xl"></i></label>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        
+    </main>
+
+
+
+        </div>
+
+
+
+    <script src="{% static 'other_user_profile.js' %}"></script>
+ 
+    
+</body>
+</html>

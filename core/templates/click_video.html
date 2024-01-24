@@ -1,0 +1,139 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="{% static 'click_video.css' %}">
+    <script src="https://kit.fontawesome.com/d57e6babac.js" crossorigin="anonymous"></script>
+    <title>Aclesia</title>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="nav-wrapper">
+                <a class="nav-image" href=""><img class="aclesia-logo" src="{% static 'aclesia_logo_50x50.png'%}"></a>
+                <nav>
+                    <ul aria-label="Primary" role="list" class="nav-list">
+                        <li><a class="fs-md-nav" id="create-icon" href="/create-content"><i class="fa-solid fa-plus fa-xl"></i></a></li>
+                        <li><a class="fs-md-nav" id="follow-others" href="https://www.google.com"><i class="fa-solid fa-user-plus fa-xl"></i></a></li>
+                        <li><a class="fs-md-nav" id="chat" href="https://www.google.com"><i class="fa-solid fa-message fa-xl"></i></a></li>
+                        <li><a class="fs-md-nav" id="notifications" href="https://www.google.com"><i class="fa-solid fa-bell fa-xl"></i></a></li>
+                        <li><a class="fs-md-nav" id="user-profile-image" href="/user_profile"><img class="profile-logo" src="{% static 'nathan_logo_50x50.png'%}"></a></li>
+                        <li><a class="fs-md-nav" id="dropdown-button" href="#"><i class="fa-solid fa-caret-down fa-lg"></i></a></li>
+                    </ul>
+                </nav>
+
+            </div>
+            <div class="features-hidden profile-dropdown-container" id="dropdown-menu">
+                <div class="">
+                    <ul class="profile-dropdown-list" aria-label="primary" role="list">
+                        <li class="profile-dropdown-item fs-sm"><a class="profile-dropdown-link" href="/user_profile">Profile</a></li>
+                        <li class="profile-dropdown-item fs-sm"><a class="profile-dropdown-link" href="#">Settings</a></li>
+                        <li class="profile-dropdown-item fs-sm"><a class="profile-dropdown-link" href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+    <main>
+        <div class="left-item-container">
+            <div class="left-bar-container">
+                <ul class="left-bar-list" aria-label="primary" role="list">
+                    <li class="left-item fs-sm"><a class="left-bar-item"  href=""><i id="series-icon"class="fa-solid fa-video fa-xl"></i><span id="series">Series</span></a></li>
+                    <li class="left-item fs-sm"><a class="left-bar-item"  href=""><i class="fa-solid fa-pencil fa-xl"></i><span id="testimonies">Testimonies</span></a></li>
+                    <li class="left-item fs-sm"><a class="left-bar-item" href=""><i class="fa-solid fa-church fa-xl"></i><span id="churches">Churches</span></a></li>
+                    <li class="left-item fs-sm"><a class="left-bar-item"  href=""><i id="creators-icon" class="fa-regular fa-user fa-xl"></i><span id="creators">Creators</span></a></li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <div class="video-list-container">
+            <div class="video-ls">
+                <ul>
+                    <li class="list-items">
+                        <div class="video-container">
+                            <video width="843" height="567.7852942" class="user-video" controls>
+                                <source src="{{ video.video_file.url }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <h3 class="fs-md-lg user-video-title">{{ video.title }}</h3>
+                            <div class="user-profile-ls">
+                                <a href="#">
+                                    <ul class="user-profile-ul">
+                                        <li class="user-profile-items"><img  id="user-profile-img" src="{{profile_img.url}}"></li>
+                                        <li class="user-profile-items"><h1 class="fs-md" id="user-profile-username">{{username}}</h1></li>
+                
+                                    </ul>
+                                </a>
+                
+                
+                            </div>
+                            <p class="fs-sm user-video-description">{{ video.description }}</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <div class="recommended-videos-container">
+            {% for videos in all_videos %}
+                <div class="recommended-video">
+                    <ul class="recommended-video-ul">
+                        <li class="recommended-video-items">
+                            <div class="video-display">
+                                <a href="{%url 'watch_video' videos.id%}">
+                                    <ul class="ul-thumbnails">
+                                        <li class="li-thumbnails">
+                                            <div class="video-items">
+                                                <img class="video-thumbnail"src="{{videos.thumbnail.url}}">
+
+                                            </div>
+                                        </li>
+                                        <li class="recommended-video-items">
+                                            <p class="video-title fs-md">{{videos.title}}</p>
+                                            <ul class="recommended-profile-ul">
+                                                <a href="{%url 'other_user_profile' username=videos.user.username%}">
+                                                    <li class="recommended-profile-items"><img id="recommended-profile-img"src="{{videos.user.profile.profile_img.url}}"></li>
+                                                    <li class="recommended-profile-items"><p class="fs-md">{{ videos.user.username }}</p></li>
+                                                </a>
+                                            </ul>
+                
+                                        </li>
+                                    </ul>
+                                </a>
+                            </div>
+
+                        </li>
+
+                    </ul>
+                </div>
+
+            {% endfor %}
+        </div>
+
+
+
+
+        
+    </main>
+
+
+
+        </div>
+
+
+
+    <script src="{% static 'user_profile.js' %}"></script>
+ 
+    
+</body>
+</html>

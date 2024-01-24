@@ -1,0 +1,55 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="{% static 'signup.css' %}">
+    <title>Aclesia</title>
+</head>
+<body>
+<!-- signup.html -->
+
+    <div class="big-body">
+        <div class="body-container">
+            <div class="inside-body-container">
+
+
+                <div class="top-header">
+                    <img id="header-image"src="{% static 'aclesia_logo.svg'%}">
+                    <p class=" fs-xlg header-txt-1">Welcome!</p>
+                    <p class="header-txt-2 fs-md">Let's get started</p>
+                </div>
+
+                <div class="bottom-header">
+                    <form onsubmit="return validateForm()" method="post" action="{% url 'signup' %}">
+                        {% csrf_token %}
+                        <p class="fs-md bottom-txt">Email</p>
+                        <input class="user-info-input" name="email"  id="email">
+                        <p class="fs-md bottom-txt">Username</p>
+                        <input class="user-info-input" name="username"  id="username">
+                        <p class="fs-md bottom-txt">Password</p>
+                        <input class="user-info-input" name="password" type="password" id="password">
+                        <p class="fs-sm">What type of account are you registering for:</p>
+                        <label class="user-label fs-sm">
+                            <input type="checkbox" name="church" id="user" value="user" class="">User
+                        </label>
+                        <label class="church-label fs-sm">
+                            <input type="checkbox" name="church" id="church" value="church" class="">Church
+                        </label>
+                    
+                        <button id="signup-button"type="submit">Signup</button>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+<script src="{% static 'user_profile.js' %}"></script>
+</body>
+</html>

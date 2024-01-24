@@ -1,0 +1,102 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="{% static 'create_content.css' %}">
+    <script src="https://kit.fontawesome.com/d57e6babac.js" crossorigin="anonymous"></script>
+    <title>Aclesia</title>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="nav-wrapper">
+                <a class="nav-image" href=""><img class="aclesia-logo" src="{% static 'aclesia_logo_50x50.png'%}"></a>
+                <nav>
+                    <ul aria-label="Primary" role="list" class="nav-list">
+                        <li><a class="fs-md-nav" id="create-icon" href="https://www.google.com"><i class="fa-solid fa-plus fa-xl"></i></a></li>
+                        <li><a class="fs-md-nav" id="follow-others" href="https://www.google.com"><i class="fa-solid fa-user-plus fa-xl"></i></a></li>
+                        <li><a class="fs-md-nav" id="chat" href="https://www.google.com"><i class="fa-solid fa-message fa-xl"></i></a></li>
+                        <li><a class="fs-md-nav" id="notifications" href="https://www.google.com"><i class="fa-solid fa-bell fa-xl"></i></a></li>
+                        <li><a class="fs-md-nav" id="user-profile-image" href="/user_profile"><img class="profile-logo" src="{{profile_photo.url}}"></a></li>
+                        <li><a class="fs-md-nav" id="dropdown-button" href="#"><i class="fa-solid fa-caret-down fa-lg"></i></a></li>
+                    </ul>
+                </nav>
+
+            </div>
+            <div class="features-hidden profile-dropdown-container" id="dropdown-menu">
+                <div class="">
+                    <ul class="profile-dropdown-list" aria-label="primary" role="list">
+                        <li class="profile-dropdown-item fs-sm"><a class="profile-dropdown-link" href="/user_profile">Profile</a></li>
+                        <li class="profile-dropdown-item fs-sm"><a class="profile-dropdown-link" href="#">Settings</a></li>
+                        <li class="profile-dropdown-item fs-sm"><a class="profile-dropdown-link" href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+    <main>
+        <div class="body-container">
+            <div class="left-item-container">
+                <div class="left-bar-container">
+                    <ul class="left-bar-list" aria-label="primary" role="list">
+                        <li class="left-item fs-sm"><a class="left-bar-item"  href=""><i id="series-icon"class="fa-solid fa-video fa-xl"></i><span id="series">Series</span></a></li>
+                        <li class="left-item fs-sm"><a class="left-bar-item"  href=""><i class="fa-solid fa-pencil fa-xl"></i><span id="testimonies">Testimonies</span></a></li>
+                        <li class="left-item fs-sm"><a class="left-bar-item" href=""><i class="fa-solid fa-church fa-xl"></i><span id="churches">Churches</span></a></li>
+                        <li class="left-item fs-sm"><a class="left-bar-item"  href=""><i id="creators-icon" class="fa-regular fa-user fa-xl"></i><span id="creators">Creators</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="fs-lg upload-videos-title">Upload Videos</p>
+            <form method="post" action="{% url 'create_content' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="upload-video-container">
+                    <div class="upload-button">
+                        <input type="file" name="video-upload" id="video-upload" hidden/>
+                        <label for="video-upload"><i class="fa-solid fa-upload fa-2xl"></i></label>
+                    </div>
+                    <div class="thumbnail-upload">
+                        <input type="file" name="thumbnail-upload" id="thumbnail-upload" hidden/>
+                        <label for="thumbnail-upload"><i class="fa-solid fa-image fa-2xl"></i></label>
+
+                    </div>
+
+                    <div class="upload-text-field">
+                        <input  name="title" placeholder="Enter title for Video" id="title">
+                        <input  name="description" placeholder="Enter Description for Video" id="description">
+
+                    </div>
+
+            
+
+                    <button id="upload_button"type="submit">Upload</button>
+                </div>
+
+            </form>
+        </div>
+
+
+
+
+
+
+
+
+        
+    </main>
+
+
+
+        </div>
+
+
+
+    <script src="{% static 'create_content.js' %}"></script>
+ 
+    
+</body>
+</html>

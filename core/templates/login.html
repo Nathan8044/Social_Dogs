@@ -1,0 +1,58 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="{% static 'login.css' %}">
+    <title>Aclesia</title>
+</head>
+<body>
+    <div class="body-container">
+
+        <div class="inside-body">
+            <div class="left-field-container">
+                <p class="fs-launch">Launching 2024</p>
+            </div>
+
+            <div class="right-field-container">
+
+                <div class="header-right-field">
+                    <img id="header-right-image" src="{% static 'aclesia_logo.svg'%}">
+                    <p class="header-right-1 fs-lg">Welcome Back!</p>
+                    <p class="header-right-2 fs-md">Please enter your details!</p>
+                </div>
+                <form method="post" action="{% url 'user_login' %}">
+                    {% csrf_token %}
+                    <div class="user-info">
+                        <p class="fs-md">Username</p>
+                        <input class="user-info-input"name="username"  id="username">
+                        <p class="fs-md">Password</p>
+                        <input class="user-info-input"name="password" type="password"  id="password">
+                        <button id="login-button"type="submit">Login</button>
+                    </div>
+        
+                </form>
+        
+                <a class="sign-up-button" href="/signup">
+                    <div class="sign-up-button-container">
+                        Sign Up
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+    <script src="{% static 'login.js' %}"></script>
+    
+</body>
+</html>

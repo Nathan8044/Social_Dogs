@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-yu*7z2=*4mx746*n*2g0xwh_g6_!99rwvs4p9c8ce5i0ng4p!z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "192.168.1.147"]
+ALLOWED_HOSTS = ["localhost", "192.168.1.147", '127.0.0.1:8000', "127.0.0.1"]
 
 
 # Application definition
@@ -81,10 +81,10 @@ WSGI_APPLICATION = 'Social_Dogs.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'social_dogs',
-        'USER': 'root',
-        'PASSWORD': 'Jack7891@',
-        'HOST': 'localhost',
+        'NAME': 'aclesia_database',
+        'USER': 'admin',
+        'PASSWORD': '77jd3Hfqjkv2T8W16t32',
+        'HOST': 'aclesiadbserver.cbepkffb9lmz.us-east-1.rds.amazonaws.com',
         'PORT': '3306'
     }
 }
@@ -107,7 +107,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
